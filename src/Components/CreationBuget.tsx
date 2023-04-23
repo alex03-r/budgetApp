@@ -1,6 +1,6 @@
 
 import "../styles/bugets.css"
-import { useRef, useContext,useId } from "react"
+import { useRef, useContext } from "react"
 import { BudgetContex } from "../Contex/AppContex"
 
 
@@ -9,13 +9,13 @@ import { BudgetContex } from "../Contex/AppContex"
 export function CreationBuget() {
 
  
-     const { addbuget  } = useContext(BudgetContex);
+     const { addbuget, budgets  } = useContext(BudgetContex);
 
 
     let id =  Date.now()
-
     const nameRef = useRef<HTMLInputElement>(null!)
     const amountRef = useRef<HTMLInputElement>(null!)
+    let checkNames = budgets.map(bg => bg.name)
 
     const onAddBudget = (): void => {
 
@@ -24,15 +24,29 @@ export function CreationBuget() {
             return
         }
 
-        addbuget({ id, 
-            name:nameRef.current.value, 
-            amount:parseInt(amountRef.current.value) ,
-            hasExpenses:false 
-        })  
+        if( !checkNames.includes(nameRef.current.value.toLocaleLowerCase()) ){
+
+            addbuget({ id, 
+                name:nameRef.current.value, 
+                amount:parseInt(amountRef.current.value) ,
+                hasExpenses:false ,
+                rangeValue:100,
+                spent:0,
+                remaining:parseInt(amountRef.current.value) ,
+                // color: "red" ? 
+            })  
+
+            nameRef.current.value = ""
+            amountRef.current.value = ""
+
+            return 
+
+
+        }
 
         nameRef.current.value = ""
         amountRef.current.value = ""
-
+        alert('The Budget should not be equal to other existing budget')
 
    
     }

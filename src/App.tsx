@@ -4,12 +4,9 @@ function App() {
 
 
   return (
-    <>
- 
- 
-          <Home/>
-
-    </>
+    <div style={{ marginTop:"0px", margin:"0px", padding:"0px" }}>
+           <Home/>
+    </div>
   )
 }
 

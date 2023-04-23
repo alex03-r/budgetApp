@@ -1,5 +1,6 @@
 
-import  { createContext, useState, useEffect } from "react";
+import  React, { createContext, useState, useEffect } from "react";
+import  { Header } from "../Components/Header"
 import App from "../App";
 
 interface ContexProps {
@@ -10,7 +11,9 @@ interface ContexProps {
     addExpenses:(expenseInfo:Expenses) => void;
     expenses:Expenses[];
     budgetSelected:Budgets;
-    setBudgets:React.Dispatch<React.SetStateAction<Budgets[]>>
+    setBudgets:React.Dispatch<React.SetStateAction<Budgets[]>>;
+    setRangeValue:React.Dispatch<React.SetStateAction<number>>;
+    rangeValue:number;
  
 }
 export let BudgetContex = createContext<ContexProps>({} as ContexProps)
@@ -20,6 +23,9 @@ export interface Budgets {
     name:string;
     hasExpenses:false; 
     amount:number;
+    rangeValue:number;
+    spent:number;
+    remaining:number
 }
 
 export interface Expenses {
@@ -28,15 +34,17 @@ export interface Expenses {
     amount:number;
     date:number;
     budget:string;
+    color:string
 }
 
 
 export function AppContexProvider() {
 
- //[{ id:1, name:"Personal", hasExpenses:false ,amount:0}]
+
     const[budgets, setBudgets ] = useState<Budgets[]>([])
     const [expenses, setExpenses ] = useState<Expenses[]>([])
     const[budgetSelected , setBudgetSelected ] = useState<Budgets>(budgets[0])
+    const [ rangeValue, setRangeValue] = useState<number>(100)
     function AddBudget(budgetInfo:Budgets):void{
 
 
@@ -56,35 +64,11 @@ export function AppContexProvider() {
 
     function addExpenses(expenseInfo:Expenses):void{
 
-       
-
+    
         setExpenses(expense => {
 
             return [...expense, expenseInfo ]
         })
-
-
-        // setBudgets( (bg  ) => {
-
-        //  let mappedBudgets =  bg.map(b => {
-
-        //       if(b.id === id){
-
-        //         return { ...b, amount: b.amount - expenseInfo.amount }
-
-        //       }else{
-
-        //         return bg
-
-        //       }      
-
-        //     })
-
-        //     return mappedBudgets;
-
-        // })
-
-
     }
 
 
@@ -97,8 +81,9 @@ export function AppContexProvider() {
     },[budgets])
 
     return (
-        <div>
-            <BudgetContex.Provider value={{ budgets: budgets , addbuget:AddBudget, selectBudget, expenses, budgetSelected, addExpenses,setBudgets }}>
+        <div style={{ display:"flex", flexDirection:"column", justifyContent:"start", marginTop:"0px" , margin:"0px",padding:'0px'}} >
+            <Header/>
+            <BudgetContex.Provider value={{ budgets: budgets , addbuget:AddBudget, selectBudget, expenses, budgetSelected, addExpenses,setBudgets ,setRangeValue, rangeValue}}>
                  <App/>
             </BudgetContex.Provider>
         </div>

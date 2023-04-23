@@ -7,7 +7,7 @@
     flex-wrap: wrap;
     width: 90vw;
     justify-content: start ;
-    height: 280px;
+    height: 240px;
     margin-left: 3%;
     margin-top: 10px;
 }
@@ -157,13 +157,32 @@
      flex-wrap: wrap;
      justify-content: center;
      align-items: center;
-    height: 180px;
-    width: 380px;
+    height: 150px;
+    width: 360px;
     border-color: #B2B4B4;
     border-radius: 4px;
     border-width: 1px;
     border-style: solid;
 
 }
+.budget-box:hover{
+
+   /* background-color: #0047BA;
+   cursor: pointer; */
+
+}
 
 
+.table-parent{
+
+    border: #B2B4B4 solid 2px;
+    width: 500px;
+    margin-left: 4%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;   
+    padding-left: 10px;
+    padding-right: 10px;
+
+
+}
