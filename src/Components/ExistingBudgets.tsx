@@ -1,18 +1,17 @@
 
 import "../styles/bugets.css"
-import { useContext  } from "react"
+import { useContext ,useEffect } from "react"
 import { BudgetContex } from "../Contex/AppContex"
 import { ExistingBudget } from "./ExistingBudget"
  
 export function ExistingBudgets(){
 
 
-  const { budgets } =  useContext(BudgetContex)
 
-
+    const { budgets } =  useContext(BudgetContex)
 
     return (
-        <div className="existingBudgets">
+        <div className="existingBudgets container">
 
                 {
                     budgets.map(bg => (

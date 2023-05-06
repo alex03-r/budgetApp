@@ -1,6 +1,6 @@
 
 import "../styles/bugets.css"
-import { useRef, useContext } from "react"
+import { useRef, useContext,useEffect } from "react"
 import { BudgetContex } from "../Contex/AppContex"
 
 
@@ -51,20 +51,28 @@ export function CreationBuget() {
    
     }
 
+    useEffect(() => {
+
+        console.log("renderizo")
+
+        localStorage.setItem("budgets", JSON.stringify(budgets))
+
+    },[budgets])
+
 
     return (
-        <div className="box">
+        <div className=" w-1/5 rounded border-1 border-solid border-gray shadow py-2 " >
             <div className="box-inside">
-                <p className="title">Create Buget</p>
+                <p className="title">Create Budget</p>
                 <div className="container-input" >
-                    <label  >Bugte name</label>
-                    <input ref={nameRef}  placeholder="Personal.." type="text" />
+                    <label className=" font-sans "  >Budget name</label>
+                    <input className="border-1 rounded border-solid border-zinc-900 focus:border-1 " ref={nameRef}  placeholder="Personal.." type="text" />
                 </div>
                 <div className="container-input">
-                    <label  >Amount</label>
-                    <input  ref={ amountRef } placeholder="0.00" type="text" />
+                    <label className="font-sans "  >Amount</label>
+                    <input className="border-1 rounded border-solid border-zinc-900" ref={ amountRef } placeholder="0.00" type="text" />
                 </div>  
-                <button onClick={ onAddBudget } className="btn-create">Create Budget</button>
+                <button onClick={ onAddBudget } className="btn-create">Create</button>
             </div>
         </div>
     )

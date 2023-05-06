@@ -1,6 +1,6 @@
-import { Budgets, BudgetContex } from "../Contex/AppContex"
+import {  BudgetContex } from "../Contex/AppContex"
 import { useContext } from "react"
-import { formatWithCurrency } from "../helpers/helper"
+import { formatWithCurrency, capitalizeName } from "../helpers/helper"
 import "../styles/bugets.css"
 
 export function ExpensesList() {
@@ -28,12 +28,12 @@ export function ExpensesList() {
             <tbody style={{ width:"100%" }} >          
               {
                     expenses.map((b,i) => (
-                      <tr  key={b.id} style={{ display:"flex", justifyContent:"space-between"}}>                
+                      <tr  key={b.id} style={{ display:"flex", justifyContent:"space-between" , backgroundColor:b.color == "#386bff" ? b.color : "#ff66c4", color:"white"}}>                
                       <td >{ i + 1 }</td>
                       <td style={{ marginRight:"0px" }} >{ b.name[0].toUpperCase() + b.name.slice(1)}</td>
-                      <td >{ b.budget[0].toUpperCase() + b.budget.slice(1)}</td>
+                      <td >{ capitalizeName(b.budget )}</td>
                       <td >{ formatWithCurrency(b.amount)}</td>
-                      <button onClick={() => alert(b.id)} >Delete</button>
+                      <button onClick={() => alert(b.id)} className="btn btn-delete" >Delete</button>
                       </tr>
                     ))
               }           

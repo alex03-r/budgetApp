@@ -2,6 +2,14 @@
 import  React, { createContext, useState, useEffect } from "react";
 import  { Header } from "../Components/Header"
 import App from "../App";
+import {
+    BrowserRouter as Router,
+    Routes,
+    Route,
+    
+  } from "react-router-dom";
+import { RecentBuget } from "../Pages/RecentBuget";
+
 
 interface ContexProps {
 
@@ -17,6 +25,7 @@ interface ContexProps {
  
 }
 export let BudgetContex = createContext<ContexProps>({} as ContexProps)
+
 
 export interface Budgets {
     id:number;
@@ -39,12 +48,21 @@ export interface Expenses {
 
 
 export function AppContexProvider() {
-
-
+    let parsedStoreBudgets 
+    let storeBudgets = localStorage.getItem("budgets");
+     if(storeBudgets.length > 1) {
+       parsedStoreBudgets = JSON.parse(storeBudgets)
+     }else{
+        storeBudgets = []
+     }
+     
+   parsedStoreBudgets
     const[budgets, setBudgets ] = useState<Budgets[]>([])
     const [expenses, setExpenses ] = useState<Expenses[]>([])
     const[budgetSelected , setBudgetSelected ] = useState<Budgets>(budgets[0])
     const [ rangeValue, setRangeValue] = useState<number>(100)
+
+
     function AddBudget(budgetInfo:Budgets):void{
 
 
@@ -71,6 +89,14 @@ export function AppContexProvider() {
         })
     }
 
+    useEffect(() => {
+
+        console.log("renderizo")
+
+        localStorage.setItem("budgets", JSON.stringify(budgets))
+
+    },[budgets])
+
 
     useEffect(() => {
 
@@ -81,10 +107,16 @@ export function AppContexProvider() {
     },[budgets])
 
     return (
-        <div style={{ display:"flex", flexDirection:"column", justifyContent:"start", marginTop:"0px" , margin:"0px",padding:'0px'}} >
+        <div style={{ display:"flex", flexDirection:"column", justifyContent:"start", marginTop:"0px" , margin:"0px",padding:'0px', height:"100vh"}} >
             <Header/>
             <BudgetContex.Provider value={{ budgets: budgets , addbuget:AddBudget, selectBudget, expenses, budgetSelected, addExpenses,setBudgets ,setRangeValue, rangeValue}}>
-                 <App/>
+                <Router>
+                    <Routes>
+                        <Route path="/" element={  <App/> } ></Route>
+                        <Route path="/budget/:id" element={  <RecentBuget />  } ></Route>                     
+                    </Routes>
+                 
+                 </Router>
             </BudgetContex.Provider>
         </div>
     )

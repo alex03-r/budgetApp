@@ -1,6 +1,13 @@
 
 
 
+export function capitalizeName(name:string){
+
+
+    return name[0].toUpperCase() + name.slice(1);
+
+
+}
 
 
 export function formatWithCurrency(amount:number){
