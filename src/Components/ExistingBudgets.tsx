@@ -6,20 +6,16 @@ import { ExistingBudget } from "./ExistingBudget"
  
 export function ExistingBudgets(){
 
-
-
-    const { budgets } =  useContext(BudgetContex)
-
+    const { budgets } =  useContext(BudgetContex);
+    // let stringyBudgets = localStorage.getItem("budgets");
+    // let parseBudgets  =  JSON.parse(stringyBudgets!);    
     return (
         <div className="existingBudgets container">
-
                 {
                     budgets.map(bg => (
-                        <ExistingBudget  { ...bg} />
+                        <ExistingBudget key={bg.id}  { ...bg} />
                     ))
                 }
-
         </div>
     )
-
 }

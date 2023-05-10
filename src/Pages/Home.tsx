@@ -14,19 +14,20 @@ export function Home(){
 
 
 
-   useEffect(() => {
+//    useEffect(() => {
 
-    console.log("renderizo")
+//     console.log("renderizo")
 
-    localStorage.setItem("budgets", JSON.stringify(budgets))
+//     localStorage.setItem("budgets", JSON.stringify(budgets))
 
-},[budgets])
+// },[budgets])
 
 
     return (
         <div style={{ width:"100%" , marginTop:"0px", paddingTop:"0px",padding:"0px", margin:"0px", height:"100vh" }} >         
             <h1 className="ms-5 text-4xl my-1 ">Welcome Anyel </h1>
-            <div className="parent-box">
+            <div className=" flex flex-row md:flex-col h-auto ">
+            {/* "parent-box" */}
                 <CreationBuget />
                 <AddExpenses/>
             </div>
@@ -36,7 +37,7 @@ export function Home(){
                     <h2 style={{marginLeft:"4%" }}>Existing Budgets</h2>
                     <ExistingBudgets />
                 </>
-                  : <h1 className="text-xl ms-5 my-4">No Budgets for now</h1>
+                  : <h1 className="text-xl ms-5 my-4 ">No Budgets for now</h1>
                 }
               {  expenses.length  > 0   &&  
               <>

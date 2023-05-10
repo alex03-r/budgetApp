@@ -48,16 +48,12 @@ export interface Expenses {
 
 
 export function AppContexProvider() {
-    let parsedStoreBudgets 
-    let storeBudgets = localStorage.getItem("budgets");
-     if(storeBudgets.length > 1) {
-       parsedStoreBudgets = JSON.parse(storeBudgets)
-     }else{
-        storeBudgets = []
-     }
-     
-   parsedStoreBudgets
-    const[budgets, setBudgets ] = useState<Budgets[]>([])
+ 
+     let parsedStoreBudgets 
+     let storeBudgets = localStorage.getItem("budgets") ;
+    parsedStoreBudgets = JSON.parse(storeBudgets!)  || []
+
+    const[budgets, setBudgets ] = useState<Budgets[]>(parsedStoreBudgets)
     const [expenses, setExpenses ] = useState<Expenses[]>([])
     const[budgetSelected , setBudgetSelected ] = useState<Budgets>(budgets[0])
     const [ rangeValue, setRangeValue] = useState<number>(100)
@@ -81,7 +77,6 @@ export function AppContexProvider() {
     }
 
     function addExpenses(expenseInfo:Expenses):void{
-
     
         setExpenses(expense => {
 
@@ -97,14 +92,6 @@ export function AppContexProvider() {
 
     },[budgets])
 
-
-    useEffect(() => {
-
-        console.log("renderizo")
-
-        localStorage.setItem("budgets", JSON.stringify(budgets))
-
-    },[budgets])
 
     return (
         <div style={{ display:"flex", flexDirection:"column", justifyContent:"start", marginTop:"0px" , margin:"0px",padding:'0px', height:"100vh"}} >

@@ -1,5 +1,6 @@
 import { useContext, useRef } from "react"
 import { BudgetContex } from "../Contex/AppContex"
+import { Budgets } from "../Contex/AppContex"
 
 import "../styles/bugets.css"
 
@@ -15,8 +16,7 @@ export function AddExpenses() {
     const onBudgetSelection = (e: React.ChangeEvent<HTMLSelectElement>) => {
 
      //   let budgetSelectedOld = budgets.find(bg => bg.name = e.target.value)
-
-      
+     
         selectBudget( e.target.value )
 
     }
@@ -47,7 +47,8 @@ export function AddExpenses() {
         })
         
 
-        setBudgets(budgets => {
+        setBudgets( (budgets) => {
+
             return budgets.map(bg => {
                 if(bg.id === budgetSelected.id){
 
@@ -84,7 +85,7 @@ export function AddExpenses() {
     return (
 
         // box-expense 
-        <div className="border-solid shadow border-1 rounded w-96 ms-4 py-3">
+        <div className="border-solid shadow border-1 rounded sm:w-40 md:w-2/5 lg:w-2/5 ms-4 py-3">
 
             <div className="box-expense-parent">
                 <label className="title font-sans ">Add Expense</label>
@@ -116,7 +117,7 @@ export function AddExpenses() {
 
                     </select>
                 </div>
-                <button onClick={onAddExpense} className="btn-Add"> Add </button>
+                <button onClick={onAddExpense} className="btn-Add hover:bg-cyan-500 hover:border-cyan-500 "> Add </button>
             </div>
         </div>
     )

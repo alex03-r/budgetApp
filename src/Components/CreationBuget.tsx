@@ -2,6 +2,7 @@
 import "../styles/bugets.css"
 import { useRef, useContext,useEffect } from "react"
 import { BudgetContex } from "../Contex/AppContex"
+import { useForm } from  "../Hooks/useForm"
 
 
 
@@ -10,44 +11,36 @@ export function CreationBuget() {
 
  
      const { addbuget, budgets  } = useContext(BudgetContex);
+     const { onAddFields , values , removeFieldsValues}  = useForm()
 
 
     let id =  Date.now()
-    const nameRef = useRef<HTMLInputElement>(null!)
-    const amountRef = useRef<HTMLInputElement>(null!)
+    // const nameRef = useRef<HTMLInputElement>(null!)
+    // const amountRef = useRef<HTMLInputElement>(null!)
     let checkNames = budgets.map(bg => bg.name)
 
     const onAddBudget = (): void => {
 
-        if(!nameRef.current.value && !amountRef.current.value){
+        if(!values.name && !values.amount ){
             alert("Please fill out the inputs to create a budget");
             return
         }
 
-        if( !checkNames.includes(nameRef.current.value.toLocaleLowerCase()) ){
-
-            addbuget({ id, 
-                name:nameRef.current.value, 
-                amount:parseInt(amountRef.current.value) ,
+        if( !checkNames.includes(values.name.toLocaleLowerCase()) ){
+            addbuget({ id,          
+                name:values.name,           
+                amount: parseInt(values.amount + ""),
                 hasExpenses:false ,
                 rangeValue:100,
-                spent:0,
-                remaining:parseInt(amountRef.current.value) ,
+                spent:0,         
+                remaining: parseInt(values.amount + ""),
                 // color: "red" ? 
-            })  
-
-            nameRef.current.value = ""
-            amountRef.current.value = ""
-
+            })        
+            removeFieldsValues();
             return 
-
-
         }
-
-        nameRef.current.value = ""
-        amountRef.current.value = ""
+        removeFieldsValues();
         alert('The Budget should not be equal to other existing budget')
-
    
     }
 
@@ -61,21 +54,19 @@ export function CreationBuget() {
 
 
     return (
-        <div className=" w-1/5 rounded border-1 border-solid border-gray shadow py-2 " >
-            <div className="box-inside">
+        <div className="sm:w-1/5  md:w-2/5 lg:w-10 xl:w-2/6 rounded border-1  border-solid border-gray shadow-md py-2 " >
+            <div className="box-inside px-4 ">        
                 <p className="title">Create Budget</p>
                 <div className="container-input" >
                     <label className=" font-sans "  >Budget name</label>
-                    <input className="border-1 rounded border-solid border-zinc-900 focus:border-1 " ref={nameRef}  placeholder="Personal.." type="text" />
+                    <input className="border-1 rounded border-solid border-zinc-900 focus:border-1 w-auto " name="name" value={values.name} onChange={(e) => onAddFields(e)} placeholder="Personal.." type="text" />
                 </div>
                 <div className="container-input">
                     <label className="font-sans "  >Amount</label>
-                    <input className="border-1 rounded border-solid border-zinc-900" ref={ amountRef } placeholder="0.00" type="text" />
+                    <input className="border-1 rounded border-solid border-zinc-900" value={values.amount} name="amount" onChange={(e) => onAddFields(e)} placeholder="0.00" type="text" />
                 </div>  
                 <button onClick={ onAddBudget } className="btn-create">Create</button>
             </div>
         </div>
     )
-
-
 }
