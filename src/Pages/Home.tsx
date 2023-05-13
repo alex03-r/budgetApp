@@ -12,17 +12,6 @@ export function Home(){
 
    const { expenses, budgets } =  useContext(BudgetContex)
 
-
-
-//    useEffect(() => {
-
-//     console.log("renderizo")
-
-//     localStorage.setItem("budgets", JSON.stringify(budgets))
-
-// },[budgets])
-
-
     return (
         <div style={{ width:"100%" , marginTop:"0px", paddingTop:"0px",padding:"0px", margin:"0px", height:"100vh" }} >         
             <h1 className="ms-5 text-4xl my-1 ">Welcome Anyel </h1>

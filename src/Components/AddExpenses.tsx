@@ -1,28 +1,36 @@
-import { useContext, useRef } from "react"
+import { useContext, useRef, useState , useEffect} from "react"
 import { BudgetContex } from "../Contex/AppContex"
 import { Budgets } from "../Contex/AppContex"
+import { useForm } from "../Hooks/useForm"
 
 import "../styles/bugets.css"
 
 export function AddExpenses() {
 
 
+    const { values, onAddFields , removeFieldsValues } = useForm();
 
-    const nameRef = useRef<HTMLInputElement>(null!)
-    const amountRef = useRef<HTMLInputElement>(null!)
+    const selectRef = useRef<HTMLSelectElement>(null!)
+    // const nameRef = useRef<HTMLInputElement>(null!)
+    // const amountRef = useRef<HTMLInputElement>(null!)
+    const[ selectExpence, setSelectedExpense] = useState<string>("")
+    const { budgets, budgetSelected, addExpenses, setBudgets  } = useContext(BudgetContex)
+  
+  
+    useEffect(() => {
+        setSelectedExpense(selectRef.current.value)
 
-    const { budgets, selectBudget, budgetSelected, addExpenses, setBudgets  } = useContext(BudgetContex)
+    })
+
 
     const onBudgetSelection = (e: React.ChangeEvent<HTMLSelectElement>) => {
-
-     //   let budgetSelectedOld = budgets.find(bg => bg.name = e.target.value)
      
-        selectBudget( e.target.value )
+       setSelectedExpense( e.target.value )
 
     }
 
     let options = budgets.map(bg =>    bg.name )
-
+ 
     options.unshift("Select" );
 
     const onAddExpense = () => { 
@@ -33,8 +41,12 @@ export function AddExpenses() {
             return
         }
 
+        if(selectExpence == 'Select'){
+            alert("Please select a diferent expense")
+            return
 
-
+        }
+        
         let id = Date.now()
         let date = new Date()
         addExpenses({
@@ -47,17 +59,20 @@ export function AddExpenses() {
         })
         
 
-        setBudgets( (budgets) => {
+        setBudgets( (budgets)  => {
 
             return budgets.map(bg => {
                 if(bg.id === budgetSelected.id){
 
                     return { ...bg, 
-                        rangeValue: changeRangeValue( ( bg.spent +  parseInt(amountRef.current.value)) , bg.amount ) 
-                        , hasExpenses:true , 
-                        spent:  parseInt(amountRef.current.value) + bg.spent, 
-                        remaining:   bg.amount - ( bg.spent +  parseInt(amountRef.current.value))
-                    
+                 //     rangeValue: changeRangeValue( ( bg.spent +  parseInt(amountRef.current.value)) , bg.amount ) 
+                        rangeValue: changeRangeValue( ( bg.spent +  parseInt( values.amount + "" )) , bg.amount ) 
+                        ,hasExpenses:true , 
+                      // spent:  parseInt(amountRef.current.value) + bg.spent, 
+                         spent:  parseInt(values.amount + "") + bg.spent, 
+                //        remaining:   bg.amount - ( bg.spent +  parseInt(amountRef.current.value))
+                          remaining:   bg.amount - ( bg.spent +  parseInt( values.amount + "" ))
+                          
                     }
                 }else {
                     return bg
@@ -67,8 +82,9 @@ export function AddExpenses() {
 
 
         setTimeout(() => {
-            nameRef.current.value = ""
-            amountRef.current.value = ""
+            // nameRef.current.value = ""
+            // amountRef.current.value = ""
+            removeFieldsValues()
         },3000)
 
     }
@@ -93,18 +109,18 @@ export function AddExpenses() {
 
                     <div className="container-input" >
                         <label  >Expense name</label>
-                        <input className="border-1 rounded border-solid border-zinc-900" ref={nameRef} placeholder="item" type="text" />
+                        <input className="border-1 rounded border-solid border-zinc-900" name="name" value={values.name} onChange={(e) => onAddFields(e) } placeholder="item" type="text" />
                     </div>
                     <div className="container-input">
                         <label  >Amount</label>
-                        <input className="border-1 rounded border-solid border-zinc-900" ref={amountRef} style={{ width: "120px" }} placeholder="0.00" />
+                        <input className="border-1 rounded border-solid border-zinc-900" name="amount" value={values.amount} onChange={(e) => onAddFields(e) } style={{ width: "120px" }} placeholder="0.00" />
 
                     </div>
 
                 </div>
                 <div style={{ display: "flex", flexDirection: "column", marginTop: "0px" }} >
                     <label>Budget Category</label>
-                    <select className="border-1 rounded border-solid border-zinc-900" onChange={onBudgetSelection}  style={{ width: "120px" }}>
+                    <select ref={selectRef} className="border-1 rounded border-solid border-zinc-900" onChange={onBudgetSelection}  style={{ width: "120px" }}>
 
                         {
                             options.map(bg => (
