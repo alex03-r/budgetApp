@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { formatAmount } from "../helpers/helper";
+
 
 interface fields{
     name:string;
@@ -14,7 +16,11 @@ export function useForm() {
   const onAddFields = (event:React.ChangeEvent<HTMLInputElement>):void => {
 
     setValues((field) => {
-      return { ...field,  [event.target.name]: event.target.value };
+      return { 
+        ...field,         
+        [event.target.name]: event.type == "number" ?  formatAmount( parseInt(event.target.value + ".00" )  )  :  event.target.value 
+      
+      };
     });
 
   };

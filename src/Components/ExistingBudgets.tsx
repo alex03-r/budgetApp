@@ -7,10 +7,10 @@ import { ExistingBudget } from "./ExistingBudget"
 export function ExistingBudgets(){
 
     const { budgets } =  useContext(BudgetContex);
-    // let stringyBudgets = localStorage.getItem("budgets");
-    // let parseBudgets  =  JSON.parse(stringyBudgets!);    
+  
     return (
-        <div className="existingBudgets container">
+        <div className=" flex flex-row  overflow-x-auto  ">
+            {/* existingBudgets */}
                 {
                     budgets.map(bg => (
                         <ExistingBudget key={bg.id}  { ...bg} />

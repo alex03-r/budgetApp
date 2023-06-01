@@ -30,7 +30,7 @@ export let BudgetContex = createContext<ContexProps>({} as ContexProps)
 export interface Budgets {
     id:number;
     name:string;
-    hasExpenses:false; 
+    hasExpenses:Boolean; 
     amount:number;
     rangeValue:number;
     spent:number;

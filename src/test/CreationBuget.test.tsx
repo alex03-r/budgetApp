@@ -11,7 +11,7 @@ import { CreationBuget } from "../Components/CreationBuget"
 
 
 
-        expect(2).toBe(2)
+        render( <CreationBuget />  )
 
 
     })
