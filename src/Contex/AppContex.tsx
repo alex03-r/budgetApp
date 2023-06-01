@@ -6,6 +6,7 @@ import {
     BrowserRouter as Router,
     Routes,
     Route,
+    json,
     
   } from "react-router-dom";
 import { RecentBuget } from "../Pages/RecentBuget";
@@ -49,12 +50,15 @@ export interface Expenses {
 
 export function AppContexProvider() {
  
-     let parsedStoreBudgets 
-     let storeBudgets = localStorage.getItem("budgets") ;
-    parsedStoreBudgets = JSON.parse(storeBudgets!)  || []
+  
+    let localStorageBudgets = localStorage.getItem("budgets") ;
+    let parsedBudgets  = JSON.parse(localStorageBudgets!)  || []
+  
+    let localStorageExpenses = localStorage.getItem("expenses");
+    let parsedExpenses  = JSON.parse(localStorageExpenses!) || []
 
-    const[budgets, setBudgets ] = useState<Budgets[]>(parsedStoreBudgets)
-    const [expenses, setExpenses ] = useState<Expenses[]>([])
+    const[budgets, setBudgets ] = useState<Budgets[]>(parsedBudgets)
+    const [expenses, setExpenses ] = useState<Expenses[]>(parsedExpenses)
     const[budgetSelected , setBudgetSelected ] = useState<Budgets>(budgets[0])
     const [ rangeValue, setRangeValue] = useState<number>(100)
 
@@ -91,6 +95,11 @@ export function AppContexProvider() {
         localStorage.setItem("budgets", JSON.stringify(budgets))
 
     },[budgets])
+
+    useEffect(() => {
+        localStorage.setItem("expenses", JSON.stringify(expenses) )
+
+    }, [ expenses ])
 
 
     return (

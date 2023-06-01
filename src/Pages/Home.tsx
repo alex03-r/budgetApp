@@ -20,7 +20,7 @@ export function Home() {
                 <CreationBuget />
                 <AddExpenses />
             </div>
-            <div style={{ padding: '0px', margin: "0px", width: "100%", overflowX: "auto" }}>
+            <div style={{ padding: '0px', margin: "0px", width: "100%", height:"100vh" }}>
                 {budgets.length > 0 ?
                     <>
                         <h2 className="ms-5" >Existing Budgets</h2>

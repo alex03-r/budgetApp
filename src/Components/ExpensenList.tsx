@@ -1,4 +1,4 @@
-import {  BudgetContex } from "../Contex/AppContex"
+import { BudgetContex } from "../Contex/AppContex"
 import { useContext } from "react"
 import { formatWithCurrency, capitalizeName } from "../helpers/helper"
 import "../styles/bugets.css"
@@ -13,34 +13,37 @@ export function ExpensesList() {
 
   return (
     <>
-      <table className="table-parent">
-   
-
-   <thead  >
-              <tr style={{ display:"flex" , justifyContent:"space-between"}} >
-                <th>#</th>
-                <th>Name</th>
-                <th>Budget</th>
-                <th>Amount</th>
-                <th>Action</th>
+      <table className=" flex flex-col ms-11 border rounded h-2/5 border-collapse ">
+      {/* table-parent */}
+       
+       <div className=" flex flex-col " >
+       <thead  >
+          <tr className="flex" >
+            <th className="border border-slate-300" >#</th>
+            <th className="border border-slate-300" >Name</th>
+            <th className="border border-slate-300">Budget</th>
+            <th className="border border-slate-300">Amount</th>
+            <th className="border border-slate-300">Action</th>
+          </tr>
+        </thead>
+        <tbody style={{ width: "100%" }} >
+          {
+            expenses.map((expense, i) => (
+               <tr key={expense.id} className="border-collapse  " > 
+              {/* //  style={{ display: "flex", justifyContent: "space-between",  }} */}
+                <td className="border border-slate-300" >{i + 1}</td>
+                <td className="border border-slate-300">{capitalizeName(expense.name)}</td>
+                <td className="border border-slate-300">{capitalizeName(expense.budget)}</td>
+                <td className="border border-slate-300">{formatWithCurrency(expense.amount)}</td>
+                <button onClick={() => alert(expense.id)} className="btn btn-delete" >Delete</button>
               </tr>
-            </thead>
-            <tbody style={{ width:"100%" }} >          
-              {
-                    expenses.map((b,i) => (
-                      <tr  key={b.id} style={{ display:"flex", justifyContent:"space-between" , backgroundColor:b.color == "#386bff" ? b.color : "#ff66c4", color:"white"}}>                
-                      <td >{ i + 1 }</td>
-                      <td style={{ marginRight:"0px" }} >{ b.name[0].toUpperCase() + b.name.slice(1)}</td>
-                      <td >{ capitalizeName(b.budget )}</td>
-                      <td >{ formatWithCurrency(b.amount)}</td>
-                      <button onClick={() => alert(b.id)} className="btn btn-delete" >Delete</button>
-                      </tr>
-                    ))
-              }           
-            
-            </tbody>
- 
-    
+            ))
+          }
+
+        </tbody>
+       </div>
+
+
       </table>
     </>
   )

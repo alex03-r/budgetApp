@@ -19,9 +19,7 @@ export function RecentBuget() {
         <div className="flex ms-10 gap-11 h-full "  >
             <BudgetSelected budgetSelected={budgetSelected!} />
             <div>
-
                 {
-
                     expensesOfBudgetSelected.length > 0 &&
                     <>
                         <h2>Expenses</h2>

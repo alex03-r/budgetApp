@@ -3,20 +3,14 @@ import { Link, } from 'react-router-dom'
 import { formatWithCurrency, capitalizeName, formatAmount } from "../helpers/helper"
 import {  Budgets } from "../Contex/AppContex"
 
-
-// type ID = {
-//     id:string
-// }
-
-interface appProps {
+interface BudgetProps {
     budgetSelected: Budgets
 }
 
 
-export function BudgetSelected({ budgetSelected }: appProps) {
+export function BudgetSelected({ budgetSelected }: BudgetProps) {
 
  
-
     return (
 
         <div className='mt-10 h-2/4 ' >
