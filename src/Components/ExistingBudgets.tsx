@@ -1,21 +1,41 @@
 
 import "../styles/bugets.css"
-import { useContext ,useEffect } from "react"
+import { useContext } from "react"
 import { BudgetContex } from "../Contex/AppContex"
-import { ExistingBudget } from "./ExistingBudget"
+import { BudgetItem } from "./BudgetItem"
  
 export function ExistingBudgets(){
 
-    const { budgets } =  useContext(BudgetContex);
+    const { budgets, setBudgets, setExpenses, expenses } =  useContext(BudgetContex);
+
+
+    const onDeleteBudget = (id:number)  => {
+
+ 
+        let budgetToDelete = budgets.find(b => b.id == id);
+        if(budgetToDelete?.hasExpenses){
+            let filteredExpenses = expenses.filter(expense => expense.budget !== budgetToDelete?.name );
+            setExpenses(filteredExpenses)
+        }
+
+        let filteredBudgets = budgets.filter( budget => budget.id !== id);
+         
+        setBudgets(filteredBudgets)
+
+  
+
+
+    }
   
     return (
-        <div className=" flex flex-row  overflow-x-auto  ">
-            {/* existingBudgets */}
+     <>
+        <div className="flex sm:ms-5 md:ms-5 lg:ms-7 xl:ms-12 overflow-x-auto mb-3 me-3  "  >     
                 {
                     budgets.map(bg => (
-                        <ExistingBudget key={bg.id}  { ...bg} />
+                        <BudgetItem key={bg.id} onDeleteBudget={onDeleteBudget}  { ...bg} />
                     ))
                 }
         </div>
+     </>
     )
 }

@@ -21,6 +21,7 @@ interface ContexProps {
     expenses:Expenses[];
     budgetSelected:Budgets;
     setBudgets:React.Dispatch<React.SetStateAction<Budgets[]>>;
+    setExpenses:React.Dispatch<React.SetStateAction<Expenses[]>>;
     setRangeValue:React.Dispatch<React.SetStateAction<number>>;
     rangeValue:number;
  
@@ -105,7 +106,7 @@ export function AppContexProvider() {
     return (
         <div style={{ display:"flex", flexDirection:"column", justifyContent:"start", marginTop:"0px" , margin:"0px",padding:'0px', height:"100vh"}} >
             <Header/>
-            <BudgetContex.Provider value={{ budgets: budgets , addbuget:AddBudget, selectBudget, expenses, budgetSelected, addExpenses,setBudgets ,setRangeValue, rangeValue}}>
+            <BudgetContex.Provider value={{ budgets: budgets , addbuget:AddBudget, selectBudget, expenses, budgetSelected, addExpenses,setBudgets ,setRangeValue, rangeValue, setExpenses}}>
                 <Router>
                     <Routes>
                         <Route path="/" element={  <App/> } ></Route>

@@ -13,25 +13,27 @@ export function Home() {
     const { expenses, budgets } = useContext(BudgetContex)
 
     return (
-        <div style={{ width: "100%", height: "100vh" }}   >
-            <h1 className="ms-5 text-4xl my-1 ">Welcome Anyel </h1>
-            <div className=" flex flex-row md:flex-col  h-auto ps-10 mb-4  2xl:w-72  ">
-                {/* "parent-box" */}
+        <div  style={{ width: "100%", height: "100vh" }}   >
+            <h1 className=" sm:ms-5 md:ms-8 lg:ms-10 text-4xl xl:ms-14 my-1 ">Welcome Anyel </h1>
+            <div className=" sm:ms-7 md:ms-8 lg:ms-10 xl:ms-14 sm:flex mb-4">
                 <CreationBuget />
                 <AddExpenses />
             </div>
-            <div style={{ padding: '0px', margin: "0px", width: "100%", height:"100vh" }}>
-                {budgets.length > 0 ?
-                    <>
-                        <h2 className="ms-5" >Existing Budgets</h2>
-                        <ExistingBudgets />
-                    </>
-                    : <h1 className="text-xl ms-5 my-4 ">No Budgets for now</h1>
+            <div>       
+                {
+                    budgets.length > 0 ?
+                        <>
+                            <h2 className=" sm:ms-7 md:ms-8 lg:ms-10 xl:ms-14 " >Existing Budgets</h2>
+                            <ExistingBudgets />
+                        </>
+                        : <h1 className="text-xl sm:ms-7  md:ms-8 lg:ms-10  xl:ms-14 my-4 ">No Budgets for now. Please add one</h1>
                 }
                 {
                     expenses.length > 0 &&
                     <>
-                        <h3 style={{ marginLeft: "4%" }}>Exinsting expenses</h3> <ExpensesList /> </>
+                        <h3 className=" sm:ms-7 md:ms-7 lg:ms-10 xl:ms-14 " >Exinsting expenses</h3> 
+                        <ExpensesList />                         
+                    </>
                 }
             </div>
         </div>
