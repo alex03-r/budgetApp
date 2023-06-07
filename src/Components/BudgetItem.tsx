@@ -1,6 +1,9 @@
 
 import { formatWithCurrency, formatAmount, capitalizeName } from "../helpers/helper";
 import { Link } from "react-router-dom"
+import { BudgetContex } from "../Contex/AppContex";
+import { PopUp } from "./PopUp";
+import { useContext } from "react"
 
 interface BudgetsItem {
   id:number;
@@ -15,11 +18,38 @@ interface BudgetsItem {
 }
 
 export function BudgetItem(props: BudgetsItem) {
+
+
+  const {  setPopUp, setPopUpValues  } = useContext(BudgetContex)
+
+  const setAndOpenPopUpValues = () => {
+
+    let popUpValues = {
+    
+      title:"Delete",
+      text: "Are you sure ?", 
+      actionName: "delete",  
+      action:() =>  {
+        props.onDeleteBudget(props.id) 
+      },
+
+    }
+
+    setPopUpValues(popUpValues)
+
+
+
+    setPopUp(true)
+
+
+  }
   
 
   return (
-    <div className="budget-box " key={props.id}>
-    <div className=" w-full justify-self-start cursor-pointer" onClick={ () => props.onDeleteBudget(props.id) } >X</div>
+    <div className="budget-box relative " key={props.id}>
+    <div className="cursor-pointer  absolute" style={{ top:"0px", right:"10px", color:"red" }} onClick={ setAndOpenPopUpValues } >X</div>
+
+    {/* () => props.onDeleteBudget(props.id)  */}
       <div className="flex justify-between w-full px-2 " >
 
         <p>{capitalizeName(props.name)}</p>
@@ -30,10 +60,11 @@ export function BudgetItem(props: BudgetsItem) {
         {props.hasExpenses && <p> {formatAmount(props.spent)} spent</p>}
         {props.hasExpenses && <p> {formatAmount(props.remaining)} remaining </p>}
       </div>
-      <button className="btn-viewDetails" >
+      <button  className="btn-viewDetails" >
 
         <Link style={{ textDecoration: "none", color: "white" }} to={`budget/${props.id}`}  > View Details</Link>
       </button>
+
 
     </div>
   )

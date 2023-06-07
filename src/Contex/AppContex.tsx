@@ -6,7 +6,7 @@ import {
     BrowserRouter as Router,
     Routes,
     Route,
-    json,
+
     
   } from "react-router-dom";
 import { RecentBuget } from "../Pages/RecentBuget";
@@ -24,6 +24,11 @@ interface ContexProps {
     setExpenses:React.Dispatch<React.SetStateAction<Expenses[]>>;
     setRangeValue:React.Dispatch<React.SetStateAction<number>>;
     rangeValue:number;
+    popUp:Boolean;
+    setPopUp: React.Dispatch<React.SetStateAction<Boolean>>;
+    popUpValues:PopProps;
+    setPopUpValues: React.Dispatch<React.SetStateAction<PopProps>>;
+    
  
 }
 export let BudgetContex = createContext<ContexProps>({} as ContexProps)
@@ -48,6 +53,14 @@ export interface Expenses {
     color:string
 }
 
+interface PopProps{
+
+    title:string;
+    text: string
+    actionName: string
+    action:() =>  void;
+
+}
 
 export function AppContexProvider() {
  
@@ -62,6 +75,9 @@ export function AppContexProvider() {
     const [expenses, setExpenses ] = useState<Expenses[]>(parsedExpenses)
     const[budgetSelected , setBudgetSelected ] = useState<Budgets>(budgets[0])
     const [ rangeValue, setRangeValue] = useState<number>(100)
+
+    const[ popUp, setPopUp ] = useState<Boolean>(false)
+    const[ popUpValues, setPopUpValues ] = useState<PopProps | null>(null)
 
 
     function AddBudget(budgetInfo:Budgets):void{
@@ -106,7 +122,7 @@ export function AppContexProvider() {
     return (
         <div style={{ display:"flex", flexDirection:"column", justifyContent:"start", marginTop:"0px" , margin:"0px",padding:'0px', height:"100vh"}} >
             <Header/>
-            <BudgetContex.Provider value={{ budgets: budgets , addbuget:AddBudget, selectBudget, expenses, budgetSelected, addExpenses,setBudgets ,setRangeValue, rangeValue, setExpenses}}>
+            <BudgetContex.Provider value={{ budgets: budgets , addbuget:AddBudget, selectBudget, expenses, budgetSelected, addExpenses,setBudgets ,setRangeValue, rangeValue, setExpenses , popUp, setPopUp, popUpValues, setPopUpValues}}>
                 <Router>
                     <Routes>
                         <Route path="/" element={  <App/> } ></Route>
