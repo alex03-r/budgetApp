@@ -2,15 +2,8 @@
 import  React, { createContext, useState, useEffect } from "react";
 import  { Header } from "../Components/Header"
 import App from "../App";
-import {
-    BrowserRouter as Router,
-    Routes,
-    Route,
-
-    
-  } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { RecentBuget } from "../Pages/RecentBuget";
-
 
 interface ContexProps {
 
@@ -33,7 +26,6 @@ interface ContexProps {
 }
 export let BudgetContex = createContext<ContexProps>({} as ContexProps)
 
-
 export interface Budgets {
     id:number;
     name:string;
@@ -42,15 +34,16 @@ export interface Budgets {
     rangeValue:number;
     spent:number;
     remaining:number
+    color:string
 }
 
 export interface Expenses {
     id:number;
     name:string;
     amount:number;
-    date:number;
+    date:string;
     budget:string;
-    color:string
+
 }
 
 interface PopProps{
@@ -77,7 +70,7 @@ export function AppContexProvider() {
     const [ rangeValue, setRangeValue] = useState<number>(100)
 
     const[ popUp, setPopUp ] = useState<Boolean>(false)
-    const[ popUpValues, setPopUpValues ] = useState<PopProps | null>(null)
+    const[ popUpValues, setPopUpValues ] = useState<PopProps>(null!)
 
 
     function AddBudget(budgetInfo:Budgets):void{

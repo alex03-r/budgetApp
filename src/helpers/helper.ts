@@ -27,3 +27,10 @@ export function formatAmount(amount:number){
     
     return formaters.format(amount)
 }
+
+
+export function isPar(number:number){
+
+
+    return number % 2 == 0
+}

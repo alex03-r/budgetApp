@@ -6,7 +6,7 @@ import { BudgetItem } from "./BudgetItem"
  
 export function ExistingBudgets(){
 
-    const { budgets, setBudgets, setExpenses, expenses } =  useContext(BudgetContex);
+    const { budgets, setBudgets, setExpenses, expenses, setPopUp } =  useContext(BudgetContex);
 
 
     const onDeleteBudget = (id:number)  => {
@@ -21,15 +21,14 @@ export function ExistingBudgets(){
         let filteredBudgets = budgets.filter( budget => budget.id !== id);
          
         setBudgets(filteredBudgets)
-
-  
+        setPopUp(false) 
 
 
     }
   
     return (
      <>
-        <div className="flex sm:ms-5 md:ms-5 lg:ms-7 xl:ms-12 overflow-x-auto mb-3 me-3  "  >     
+        <div className="flex sm:ms-5 md:ms-5 lg:ms-7 xl:ms-12 overflow-x-auto mb-2 me-3  "  >     
                 {
                     budgets.map(bg => (
                         <BudgetItem key={bg.id} onDeleteBudget={onDeleteBudget}  { ...bg} />

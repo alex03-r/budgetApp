@@ -3,6 +3,7 @@ import "../styles/bugets.css"
 import {  useContext,useEffect } from "react"
 import { BudgetContex } from "../Contex/AppContex"
 import { useForm } from  "../Hooks/useForm"
+import { isPar } from "../helpers/helper"
 
 
 
@@ -31,7 +32,7 @@ export function CreationBuget() {
                 rangeValue:100,
                 spent:0,         
                 remaining: parseInt(values.amount + ""),
-                // color: "red" ? 
+                color: isPar( budgets.length ) ? "#00C4FF" : "#DDE6ED"
             })        
             removeFieldsValues();
             return 
