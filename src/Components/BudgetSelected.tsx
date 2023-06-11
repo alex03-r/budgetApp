@@ -3,27 +3,31 @@ import { Link, } from 'react-router-dom'
 import { formatWithCurrency, capitalizeName, formatAmount } from "../helpers/helper"
 import {  Budgets } from "../Contex/AppContex"
 
+
 interface BudgetProps {
     budgetSelected: Budgets
 }
 
 
-export function BudgetSelected({ budgetSelected }: BudgetProps) {
+export function  BudgetSelected({ budgetSelected }: BudgetProps) {
 
  
     return (
 
-        <div className='mt-10 h-2/4 ' >
-            <h2>Budget Selected</h2>
-            <div className='border rounded w-56' >
-                <div className='p-1 w-full flex-column justify-center' >
-                    <p>Name: {capitalizeName(budgetSelected?.name!)}</p>
-                    <p>Amount {formatWithCurrency(budgetSelected?.amount!)} </p>
-                    <p>Spent {formatAmount(budgetSelected?.spent!)} </p>
-                    <p>Remaining {formatAmount(budgetSelected?.remaining!)} </p>
-                    <p>Percentage {formatAmount(budgetSelected?.rangeValue!)} </p>
+        <div className=' ms-2 mt-10 h-2/4 w-2/5 flex flex-col items-center ' >
+           <div className='flex gap-2' >
+           <h1 className=' text-lg ' style={{ color:`${budgetSelected.color}` }} > { capitalizeName(budgetSelected.name)  } </h1>
+           <h1 className='text-lg'> Overview</h1>
+           </div>
+            <div style={{ borderColor:`${budgetSelected.color}`, borderWidth:'2px', borderStyle:"solid", borderRadius:"4px"  }} className=' w-11/12 flex flex-col items-center' >
+                <div className='p-2 ms-3 flex-column justify-center' >
+                    <p className=' text-lg '>Name: {capitalizeName(budgetSelected?.name!)}</p>
+                    <p className=' text-lg '>Amount: {formatWithCurrency(budgetSelected?.amount!)} </p>
+                    <p className=' text-lg '>Spent: {formatAmount(budgetSelected?.spent!)} </p>
+                    <p className=' text-lg '>Remaining: {formatAmount(budgetSelected?.remaining!)} </p>
+                    <p className=' text-lg '>Percentage: {formatAmount(budgetSelected?.rangeValue!)} % </p>
                 </div>
-                <button className=' bg-red-700 border rounded text-neutral-100 hover:text-neutral-100 ' ><Link to="/"> Go Back</Link></button>
+                <button style={{ backgroundColor:`${budgetSelected.color}` }} className=' w-36 mb-3 h-7  border rounded text-black hover:text-neutral-100 ' ><Link to="/home"> Go Back</Link></button>
             </div>
         </div>
 

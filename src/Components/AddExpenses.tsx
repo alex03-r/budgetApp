@@ -2,6 +2,7 @@ import { useContext, useRef, useState, useEffect } from "react"
 import { BudgetContex } from "../Contex/AppContex"
 // import { Budgets } from "../Contex/AppContex"
 import { useForm } from "../Hooks/useForm"
+import {changeRangeValue } from "../helpers/helper"
 
 import "../styles/bugets.css"
 
@@ -62,7 +63,7 @@ export function AddExpenses() {
                     return {
                         ...bg,
                         rangeValue: changeRangeValue((bg.spent + parseInt(values.amount + "")), bg.amount)
-                        , hasExpenses: true,
+                        ,hasExpenses: true,
                         spent: parseInt(values.amount + "") + bg.spent,
                         remaining: bg.amount - (bg.spent + parseInt(values.amount + ""))
                     }
@@ -82,13 +83,7 @@ export function AddExpenses() {
     }
 
 
-    function changeRangeValue(amount: number, holdAmount: number) {
-
-        let value = (amount / holdAmount) * 100;
-
-        return 100 - value
-
-    }
+ 
 
     return (
 

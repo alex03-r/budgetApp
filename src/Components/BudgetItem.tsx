@@ -58,7 +58,7 @@ export function BudgetItem(props: BudgetsItem) {
       </div>
       <button className="btn-viewDetails" >
 
-        <Link style={{ textDecoration: "none", color: "white" }} to={`budget/${props.id}`}  > View Details</Link>
+        <Link style={{ textDecoration: "none", color: "white" }} to={`/budget/${props.id}`}  > View Details</Link>
       </button>
 
 

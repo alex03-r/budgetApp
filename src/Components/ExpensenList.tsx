@@ -3,17 +3,51 @@ import { useContext } from "react"
 // import { formatWithCurrency, capitalizeName } from "../helpers/helper"
 import "../styles/bugets.css"
 import { ExpenseItem } from "./ExpenseItem"
+import { changeRangeValue } from "../helpers/helper"
+
 
 export function ExpensesList() {
 
-  const { expenses } = useContext(BudgetContex)  
+  const { expenses, setExpenses, setBudgets, setPopUp } = useContext(BudgetContex)
 
-  function deleteExpense(id:number){
+  function deleteExpense(id: number) {
+    let expenseSelected = expenses.find(expense => expense.id == id);
+    setBudgets(budgets => {
 
-    
+      return budgets.map(budget => {
 
+        if (budget.name === expenseSelected?.budget) {
 
+          return {
+            ...budget,
+            rangeValue: changeRangeValue((budget.spent - expenseSelected.amount), budget.amount),
+            hasExpenses: budget.spent - expenseSelected.amount  <= 0 ? false : true,
+            spent: budget.spent - expenseSelected.amount,
+            remaining: budget.remaining + expenseSelected.amount ,
+          }
+        } else {
+          return budget
+        }
+
+      })
+    }
+
+    )
+
+    let filteredExpenses = expenses.filter(expense => expense.id !== id)    
+    setExpenses(filteredExpenses)    
+
+    setPopUp(false)
   }
+
+
+
+
+
+
+
+
+
 
   return (
     <div className=" sm:ms-7 lg:ms-10 xl:ms-14 sm:w-11/12 mb-5" >
@@ -31,7 +65,7 @@ export function ExpensesList() {
         <tbody className="" >
           {
             expenses.map((expense) => (
-              <ExpenseItem {...expense}  deleteExpense={deleteExpense} />
+              <ExpenseItem {...expense} deleteExpense={deleteExpense} />
             ))
           }
         </tbody>

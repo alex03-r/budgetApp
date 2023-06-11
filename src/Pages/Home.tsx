@@ -12,11 +12,11 @@ import { PopUp } from "../Components/PopUp";
 
 export function Home() {
 
-    const { expenses, budgets, popUp } = useContext(BudgetContex)
+    const { expenses, budgets, popUp , user } = useContext(BudgetContex)
 
     return (
         <div  className="relative z-10 " style={{ width: "100%", height: "100vh" }}   >
-            <h1 className=" sm:ms-5 md:ms-8 lg:ms-10 text-4xl xl:ms-14 my-1 ">Welcome Anyel </h1>
+            <h1 className=" sm:ms-5 md:ms-8 lg:ms-10 text-4xl xl:ms-14 my-1 ">Welcome { user.name} </h1>
             <div className=" sm:ms-7 md:ms-8 lg:ms-10 xl:ms-14 sm:flex mb-2">
                 <CreationBuget />
                 <AddExpenses />
@@ -25,7 +25,7 @@ export function Home() {
                 {
                     budgets.length > 0 ?
                         <>
-                            <h2 className=" sm:ms-7 md:ms-8 lg:ms-10 xl:ms-14 text-lg " >Existing Budgets</h2>
+                            <h2 className="  text-black sm:ms-7 md:ms-8 lg:ms-10 xl:ms-14 text-xl " >Existing Budgets</h2>
                             <ExistingBudgets />
                         </>
                         : <h1 className="text-xl sm:ms-7  md:ms-8 lg:ms-10  xl:ms-14 my-4 ">No Budgets for now. Please add one</h1>

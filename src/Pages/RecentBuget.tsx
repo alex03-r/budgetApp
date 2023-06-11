@@ -14,13 +14,12 @@ export function RecentBuget() {
     const budgetSelected = budgets.find(budget => budget.id === parseInt(param.id!))
     const expensesOfBudgetSelected = expenses.filter(expense => expense.budget == budgetSelected?.name)
 
-
     return (
         <div className="flex ms-10 gap-11 h-full "  >
             <BudgetSelected budgetSelected={budgetSelected!} />
             <div>
                 {
-                    expensesOfBudgetSelected.length > 0 &&
+                    expensesOfBudgetSelected.length > 0 ?
                     <>
                         <h2>Expenses</h2>
                         <div>
@@ -33,6 +32,7 @@ export function RecentBuget() {
                             </ul>
                         </div>
                     </>
+                    : <h1 className="mt-10 ms-11">No Expenses for now</h1>
                 }
 
 

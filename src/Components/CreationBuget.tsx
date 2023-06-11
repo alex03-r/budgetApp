@@ -32,7 +32,7 @@ export function CreationBuget() {
                 rangeValue:100,
                 spent:0,         
                 remaining: parseInt(values.amount + ""),
-                color: isPar( budgets.length ) ? "#00C4FF" : "#DDE6ED"
+                color: isPar( budgets.length ) ? "#F2BE22" : "#DDE6ED"
             })        
             removeFieldsValues();
             return 
