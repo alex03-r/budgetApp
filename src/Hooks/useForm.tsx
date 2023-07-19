@@ -18,9 +18,7 @@ export function useForm() {
     setValues((field) => {
       return { 
         ...field,         
-        [event.target.name]: event.type == "number" ?  formatAmount( parseInt(event.target.value + ".00" )  )  :  event.target.value 
-      
-      };
+        [event.target.name]: event.type == "number" ?  formatAmount( parseInt(event.target.value + ".00" )  )  :  event.target.value      };
     });
 
   };

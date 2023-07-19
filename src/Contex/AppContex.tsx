@@ -2,7 +2,7 @@
 import React, { createContext, useState, useEffect } from "react";
 import { Header } from "../Components/Header"
 import App from "../App";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route  } from "react-router-dom";
 import { RecentBuget } from "../Pages/RecentBuget";
 import { Register } from "../Pages/Register";
 import { PrivateRoute } from "./PrivateRoute";

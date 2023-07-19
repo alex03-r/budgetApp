@@ -14,12 +14,12 @@ export function  BudgetSelected({ budgetSelected }: BudgetProps) {
  
     return (
 
-        <div className=' ms-2 mt-10 h-2/4 w-2/5 flex flex-col items-center ' >
+        <div className=' ms-2 mt-10 h-2/4 sm:w-11/12 md:w-11/12 flex flex-col items-center ' >
            <div className='flex gap-2' >
-           <h1 className=' text-lg ' style={{ color:`${budgetSelected.color}` }} > { capitalizeName(budgetSelected.name)  } </h1>
-           <h1 className='text-lg'> Overview</h1>
+             <h1 className=' text-lg ' style={{ color:`${budgetSelected.color}` }} > { capitalizeName(budgetSelected.name)  } </h1>
+             <h1 className='text-lg'> Overview</h1>
            </div>
-            <div style={{ borderColor:`${budgetSelected.color}`, borderWidth:'2px', borderStyle:"solid", borderRadius:"4px"  }} className=' w-11/12 flex flex-col items-center' >
+            <div style={{ borderColor:`${budgetSelected.color}`, borderWidth:'2px', borderStyle:"solid", borderRadius:"4px"  }} className=' sm:w-11/12 md:w-11/12 flex flex-col items-center' >
                 <div className='p-2 ms-3 flex-column justify-center' >
                     <p className=' text-lg '>Name: {capitalizeName(budgetSelected?.name!)}</p>
                     <p className=' text-lg '>Amount: {formatWithCurrency(budgetSelected?.amount!)} </p>

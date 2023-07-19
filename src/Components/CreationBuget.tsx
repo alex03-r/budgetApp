@@ -5,17 +5,12 @@ import { BudgetContex } from "../Contex/AppContex"
 import { useForm } from  "../Hooks/useForm"
 import { isPar } from "../helpers/helper"
 
-
-
-
-
 export function CreationBuget() {
 
- 
      const { addbuget, budgets  } = useContext(BudgetContex);
      const { onAddFields , values , removeFieldsValues}  = useForm()
-    let id =  Date.now()
-    let checkNames = budgets.map(bg => bg.name)
+     let id =  Date.now()
+     let checkNames = budgets.map(bg => bg.name)
 
     const onAddBudget = (): void => {
 
@@ -23,6 +18,12 @@ export function CreationBuget() {
             alert("Please fill out the inputs to create a budget");
             return
         }
+
+        if(values.amount <= 0 ){
+            alert("The amount can not be 0");
+            return
+        }
+
 
         if( !checkNames.includes(values.name.toLocaleLowerCase()) ){
             addbuget({ id,          

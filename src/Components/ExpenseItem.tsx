@@ -10,7 +10,9 @@ interface ExpenseProp{
     budget:string;
     amount:number;
     date:string;
-    deleteExpense:(id:number) => void
+    isDeleteEnable:boolean;
+    deleteExpense?:(id:number) => void
+ 
 
 
 }
@@ -20,7 +22,7 @@ export function ExpenseItem(props: ExpenseProp){
     const {  setPopUp, setPopUpValues, budgets  } = useContext(BudgetContex)
     const [isHover, setIsHover] =  useState(false)
 
-    let deletePopUp = props.deleteExpense
+    let deletePopUp = props.deleteExpense!
     let expenseName = props.name
     let budgetColor = budgets.find(budget => budget.name === props.budget)?.color ;
 
@@ -43,7 +45,7 @@ export function ExpenseItem(props: ExpenseProp){
         <td className="border border-slate-300 w-1/6 text-center " style={{ backgroundColor:`${budgetColor}`, color:"black", borderRadius:'5px' }} >{capitalizeName(props.budget)}</td>
         <td className="border border-slate-300 w-1/6 text-center">{formatWithCurrency(props.amount)}</td>
         <td className="border border-slate-300 w-1/6 text-center">{props.date}</td>
-        <td onClick={() => setPopUpValuesAndOpenIT(props.id)} className="bg-red-600 text-white cursor-pointer text-center border rounded" >Delete</td>
+     { props.isDeleteEnable &&    <td onClick={() => setPopUpValuesAndOpenIT(props.id)}   className="bg-red-600 text-white cursor-pointer text-center border rounded" >Delete</td> }
        </tr>
     )
 }

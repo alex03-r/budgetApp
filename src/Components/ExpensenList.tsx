@@ -45,10 +45,6 @@ export function ExpensesList() {
 
 
 
-
-
-
-
   return (
     <div className=" sm:ms-7 lg:ms-10 xl:ms-14 sm:w-11/12 mb-5" >
       <table className="table-auto">
@@ -65,7 +61,7 @@ export function ExpensesList() {
         <tbody className="" >
           {
             expenses.map((expense) => (
-              <ExpenseItem {...expense} deleteExpense={deleteExpense} />
+              <ExpenseItem key={expense.id} isDeleteEnable={true} {...expense} deleteExpense={deleteExpense} />
             ))
           }
         </tbody>

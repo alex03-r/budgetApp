@@ -7,7 +7,7 @@ import { useLocation } from "react-router-dom"
 
 export function Header() {
 
-    const { setPopUp, setPopUpValues, setUser, user, budgets, setBudgets, setExpenses } = useContext(BudgetContex)
+    const { setPopUp, setPopUpValues, setUser, user, setBudgets, setExpenses } = useContext(BudgetContex)
 
     let location = useLocation();
 
@@ -23,7 +23,6 @@ export function Header() {
 
     }
 
-    // 
 
     const setPopUpValuesAndOpenIt = () => {
         let popUpValues = {
@@ -45,8 +44,8 @@ export function Header() {
         <>
             <div className="h-2" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", backgroundColor: "#38b6ff", color: "white", height: "54px", width: "100%" }} >
                 <div style={{ display: "flex", justifyContent: "center", alignItems: "center", marginLeft: "4.1%" }} >
-                    <p className="text-xl" >Budget</p>
-                    <img style={{ width: "40px", height: "40px", marginLeft: "10px" }} src={Home} />
+                    <p className="text-xl" >BudgetApp</p>
+                    <img style={{ width: "40px", height: "40px", marginLeft: "10px" ,marginBottom:"4px" ,marginTop:"4px" }} src={Home} />
 
                 </div>
 

@@ -20,12 +20,10 @@ interface BudgetsItem {
 
 export function BudgetItem(props: BudgetsItem) {
 
-
   const { setPopUp, setPopUpValues } = useContext(BudgetContex)
   const [isHover, setIsHover] = useState(false)
 
   let deletePopUp = props.onDeleteBudget;
-
   let budgetName = props.name;
 
   const setPopUpValuesAndOpenIt = (id: number) => {

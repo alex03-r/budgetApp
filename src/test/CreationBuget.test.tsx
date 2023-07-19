@@ -9,9 +9,12 @@ import { CreationBuget } from "../Components/CreationBuget"
 
     test("Should render " , () => {
 
-
+         let b =9;
 
         render( <CreationBuget />  )
+
+        expect(b).toBe(expect.any(Number))
+
 
 
     })

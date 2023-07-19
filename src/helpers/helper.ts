@@ -5,8 +5,6 @@ export function capitalizeName(name:string){
 
 
     return name[0].toUpperCase() + name.slice(1);
-
-
 }
 
 
@@ -17,7 +15,6 @@ export function formatWithCurrency(amount:number){
     let  formaters = new Intl.NumberFormat( 'en-Es', options) 
 
     return formaters.format(amount)
-
 }
 
 
@@ -30,7 +27,6 @@ export function formatAmount(amount:number){
 
 
 export function isPar(number:number){
-
 
     return number % 2 == 0
 }
