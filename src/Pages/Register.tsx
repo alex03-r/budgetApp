@@ -13,7 +13,7 @@ export function Register() {
     const onRegister = () => {
 
         if (!user.name) {
-            alert("Please register")
+            alert("Please enter your name")
             return
         }
         setBudgets([])
@@ -34,8 +34,8 @@ export function Register() {
             <div className=" shadow-md border rounded h-1/2 sm:w-1/2 md:w-2/5 sm:mt-4 flex flex-col justify-evenly items-center" >
                 <h1 className="mt-3 text-xl " >Register</h1>
                 <div className=" flex flex-col" >                 
-                    <input  className="border rounded mt-2 ms-2 w-11/12" onChange={(e) => setUser({ name: e.target.value })} placeholder="name" />
-                    <button className="border mt-2 ms-2 w-11/12 rounded border-l-white text-white p-1 hover:bg-slate-500 bg-slate-500 " onClick={onRegister} >Register</button>
+                    <input  className="border rounded mt-2 ms-2 w-11/12" onChange={(e) => setUser({ name: e.target.value })} placeholder=" Name" />
+                    <button className="border mt-2 ms-2 w-11/12 rounded border-l-white text-white p-1 bg-sky-400 "  onClick={onRegister} >Register</button>
                 </div>
             </div>
 

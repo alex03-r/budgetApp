@@ -27,7 +27,6 @@ export function RecentBuget() {
                             <div>
                                 {
                                     expensesOfBudgetSelected.map(exp => {
-
                                         return <ExpenseItem key={exp.id} isDeleteEnable={false} {...exp} />
                                     })
                                 }
