@@ -11,6 +11,7 @@ import { capitalizeName } from "../helpers/helper";
 
 
 
+
 export function Home() {
 
     const { expenses, budgets, popUp , user } = useContext(BudgetContex)
@@ -22,7 +23,7 @@ export function Home() {
                 <CreationBuget />
                 <AddExpenses />
             </div>
-            <div>       
+            <div className="" >       
                 {
                     budgets.length > 0 ?
                         <>
@@ -48,7 +49,7 @@ export function Home() {
 
                 
             </div>
-       
+
         </div>
     )
 

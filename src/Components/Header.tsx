@@ -14,7 +14,8 @@ export function Header() {
     const deleteUser = function () {
 
         setUser({
-            name: ""
+            name: "",
+            isLogged:false
         })
         setBudgets([])
         setExpenses([])
@@ -52,7 +53,7 @@ export function Header() {
                 <div className="me-2" >
 
                     {
-                        user.name && location.pathname !== "/" &&
+                        user.isLogged && location.pathname !== "/regrister" &&
 
                         <button className="border rounded bg-red-600 border-rose-600 p-1" onClick={setPopUpValuesAndOpenIt} > Delete user</button>
                     }

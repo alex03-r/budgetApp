@@ -1,11 +1,13 @@
 
 import React, { createContext, useState, useEffect } from "react";
 import { Header } from "../Components/Header"
+import { AppRoutes } from "./AppRoutes";
 import App from "../App";
 import { BrowserRouter as Router, Routes, Route  } from "react-router-dom";
 import { RecentBuget } from "../Pages/RecentBuget";
 import { Register } from "../Pages/Register";
 import { PrivateRoute } from "./PrivateRoute";
+
 
 interface ContexProps {
 
@@ -31,7 +33,8 @@ interface ContexProps {
 export let BudgetContex = createContext<ContexProps>({} as ContexProps)
 
 interface User {
-    name: string
+    name: string;
+    isLogged:boolean;
 }
 
 export interface Budgets {
@@ -134,25 +137,17 @@ export function AppContexProvider() {
 
             <BudgetContex.Provider value={{ budgets: budgets, addbuget: AddBudget, selectBudget, expenses, budgetSelected, addExpenses, setBudgets, setRangeValue, rangeValue, setExpenses, popUp, setPopUp, popUpValues, setPopUpValues, user, setUser }}>
 
-                <Router>
-                    <Header />
-                    <Routes>
-
-                        <Route path="/" element={<Register />} ></Route>
-
-                        <Route path="/*" element={
-                            <PrivateRoute>
-                                <Routes>
-                                    <Route path="/home" element={<App />} ></Route>
-                                    <Route path="/budget/:id" element={<RecentBuget />} ></Route>
-                                </Routes>
-                            </PrivateRoute>
-                        } >
-                        </Route>
-
-                    </Routes>
-
-                </Router>
+                    <Router>
+                            <Header />
+                            <Routes>
+                                <Route path="/regrister" element={ <Register /> } />                         
+                                <Route path="/*" element={
+                                    <PrivateRoute>
+                                      <AppRoutes />
+                                    </PrivateRoute>
+                                } />
+                            </Routes>
+                    </Router>
             </BudgetContex.Provider>
         </div>
     )
