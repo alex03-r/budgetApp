@@ -48,7 +48,7 @@ export function Register() {
 
 
             </div>
-            <img className="sm:mt-60 lg:mt-28 " style={{ height: "70px" }} src={Sea} />
+            <img className="sm:mt-32 lg:mt-28 " style={{ height: "70px" }} src={Sea} />
         </>
     )
 }
