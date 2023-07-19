@@ -3,7 +3,7 @@ import { useContext, useRef } from "react"
 import Sea from "../assets/RealSea.jpeg"
 import { useNavigate } from "react-router-dom"
 
-import Home from "../assets/Home.png"
+
 import Money from "../assets/money.jpeg"
 
 export function Register() {
