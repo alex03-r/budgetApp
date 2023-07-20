@@ -3,7 +3,7 @@ import { useContext, useRef } from "react"
 import Sea from "../assets/RealSea.jpeg"
 import { useNavigate } from "react-router-dom"
 
-
+import "./app.css"
 import Money from "../assets/money.jpeg"
 
 export function Register() {
@@ -28,16 +28,16 @@ export function Register() {
 
     return (
         <>
-            <div className="ms-11 sm:flex-col md:flex md:flex-row justify-center items-center w-11/12 h-full  " >
+            <div className="ms-11 sm:flex-col md:flex md:flex-row justify-center items-center w-11/12 h-full" >
 
                 <div className="ms-0 pe-5 sm:mt-10 sm:justify-center flex sm:flex-row md:flex-col ">
                     <img className=" sm:w-36 w-48 rounded-2xl" src={Money} />
-                <div>
-                <h1 className="text-xl sm:ms-4 sm:mt-20 lg:mt-14 xl:mt-10 lg:ms-1 text-slate-900 font-bold" >Take control of your money</h1>
+                <div className="flex-col items-center" >
+                      <h1 className="text-xl sm:ms-4 sm:mt-20 lg:mt-14 xl:mt-10 mt-20 lg:ms-1 text-slate-900 font-bold" >Take control of your money</h1>
                      <h1 className=" sm:ms-4 text-lg italic" >Personal budgeting is the key for your finantial success</h1>
                 </div>
                 </div>
-                <div className=" shadow-md border rounded sm:h-2/4 md:h-3/4  sm:w-1/2  sm:mt-4 flex flex-col justify-evenly items-center" >
+                <div className="shadow-md border rounded sm:h-2/4 md:h-3/4 lg:h-2/4 h-2/4 sm:w-1/2 md:w-2/5 lg:w-2/5 w-3/5 sm:mt-4 flex flex-col justify-evenly items-center boxRegister" >
                     <h1 className="mt-3 text-xl " >Register</h1>
                     <div className=" flex flex-col" >
                         <input className="border rounded mt-2 ms-2 w-11/12" ref={inputRef} placeholder=" Name" />
@@ -48,7 +48,7 @@ export function Register() {
 
 
             </div>
-            <img className="sm:mt-32 lg:mt-28 " style={{ height: "70px" }} src={Sea} />
+            <img className="sm:mt-32 lg:mt-28 mt-16 " style={{ height: "70px" }} src={Sea} />
         </>
     )
 }

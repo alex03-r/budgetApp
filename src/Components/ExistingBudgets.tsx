@@ -28,7 +28,7 @@ export function ExistingBudgets(){
   
     return (
      <>
-        <div className="flex sm:ms-5 md:ms-5 lg:ms-7 xl:ms-12 overflow-x-auto mb-2 me-3  "  >     
+        <div className="flex sm:ms-5 md:ms-5 lg:ms-7 xl:ms-12 ms-9 overflow-x-auto mb-2 me-3  "  >     
                 {
                     budgets.map(bg => (
                         <BudgetItem key={bg.id} onDeleteBudget={onDeleteBudget}  { ...bg} />

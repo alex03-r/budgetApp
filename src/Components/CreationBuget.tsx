@@ -53,7 +53,7 @@ export function CreationBuget() {
 
 
     return (
-        <div className=" sm:w-2/5 md:w-2/5 lg:1/3 xl:1/5 2xl:w-1/5 rounded border-1  border-solid border-gray shadow-md p-2" >
+        <div className=" sm:w-2/5 md:w-2/5 lg:1/3 xl:1/5 2xl:w-1/5 w-5/6 sm:ms-2 ms-9 rounded border-1  border-solid border-gray shadow-md p-2" >
             {/* sm:w-1/5  md:w-2/5  xl:w-2/6 rounded border-1  border-solid border-gray shadow-md py-2 */}
             <div className="box-inside px-4 ">        
                 <p className="title">Create Budget</p>

@@ -1,0 +1,23 @@
+
+
+
+
+@media ( max-width:640){
+
+
+    .app{
+
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    
+
+
+    }
+    .boxRegister{
+
+        padding: 40px;       
+
+    }
+
+}

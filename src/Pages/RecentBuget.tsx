@@ -23,7 +23,7 @@ export function RecentBuget() {
                 {
                     expensesOfBudgetSelected.length > 0 ?
                         <>
-                            <h2 className="mt-10 ms-0 text-lg" > All expenses</h2>
+                            <h2 className="mt-10 ms-0 text-lg tex font-bold " > All expenses</h2>
                             <div>
                                 {
                                     expensesOfBudgetSelected.map(exp => {

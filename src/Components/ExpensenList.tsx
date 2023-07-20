@@ -46,7 +46,7 @@ export function ExpensesList() {
 
 
   return (
-    <div className=" sm:ms-7 lg:ms-10 xl:ms-14 sm:w-11/12 mb-5" >
+    <div className=" sm:ms-7 lg:ms-10 xl:ms-14 ms-11 sm:w-11/12 w-10/12 mb-5" >
       <table className="table-auto">
 
         <thead  >

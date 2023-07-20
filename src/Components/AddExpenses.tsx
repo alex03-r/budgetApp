@@ -95,7 +95,7 @@ export function AddExpenses() {
     return (
 
         // box-expense 
-        <div className="sm:w-2/4 md:w-2/5 lg:1/3 xl:1/5 2xl:w-1/5 rounded border-1  border-solid border-gray shadow-md ms-3 p-2 ">
+        <div className=" sm:w-2/4 md:w-2/5 lg:1/3 xl:1/5 2xl:w-1/5 w-5/6 sm:mt-0 md:mt-1 lg:mt-0 ms-9  rounded border-1  border-solid border-gray shadow-md  p-2 ">
             <div className="flex flex-column ms-4">
 
                 <label className="title font-sans ">Add Expense</label>
