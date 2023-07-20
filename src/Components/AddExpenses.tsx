@@ -110,7 +110,7 @@ export function AddExpenses() {
                     <div className=" flex flex-col flex-wrap ">
 
                         <label  >Amount</label>
-                        <input className="border-1 rounded border-solid border-zinc-900 sm:w-3/4 xl:w-2/4 " name="amount" value={values.amount} type="number" onChange={(e) => onAddFields(e)} placeholder="0.00" />
+                        <input className="border-1 rounded border-solid border-zinc-900 sm:w-3/4 xl:w-2/4 w-2/5" name="amount" value={values.amount} type="number" onChange={(e) => onAddFields(e)} placeholder="0.00" />
                     </div>
 
                 </div>
