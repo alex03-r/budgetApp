@@ -1,7 +1,7 @@
 
 
 import { render } from "@testing-library/react"
-import { CreationBuget } from "../Components/CreationBuget"
+import { CreationBuget } from "../Components/AddBudget"
 
 
  describe("<Creation/>", () => {

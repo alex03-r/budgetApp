@@ -1,11 +1,11 @@
-
-import "../styles/bugets.css"
 import {  useContext,useEffect } from "react"
-import { BudgetContex } from "../Contex/AppContex"
+import { BudgetContex } from "../Contex/AppContexProvider"
 import { useForm } from  "../Hooks/useForm"
 import { isPar } from "../helpers/helper"
 
-export function CreationBuget() {
+import "../styles/bugets.css"
+
+export function AddBudget() {
 
      const { addbuget, budgets  } = useContext(BudgetContex);
      const { onAddFields , values , removeFieldsValues}  = useForm()
@@ -18,12 +18,10 @@ export function CreationBuget() {
             alert("Please fill out the inputs to create a budget");
             return
         }
-
         if(values.amount <= 0 ){
             alert("The amount can not be 0");
             return
         }
-
 
         if( !checkNames.includes(values.name.toLocaleLowerCase()) ){
             addbuget({ id,          

@@ -1,6 +1,6 @@
 import { capitalizeName, formatWithCurrency } from "../helpers/helper"
 import { useState, useContext } from "react"
-import { BudgetContex } from "../Contex/AppContex";
+import { BudgetContex } from "../Contex/AppContexProvider";
 
 interface ExpenseProp{
 

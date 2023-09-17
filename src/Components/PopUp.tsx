@@ -1,7 +1,7 @@
 
 
 import { useContext } from "react"
-import { BudgetContex } from "../Contex/AppContex"
+import { BudgetContex } from "../Contex/AppContexProvider"
 
 
 

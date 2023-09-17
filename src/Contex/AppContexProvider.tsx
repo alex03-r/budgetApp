@@ -1,13 +1,7 @@
 
 import React, { createContext, useState, useEffect } from "react";
-import { Header } from "../Components/Header"
-import { AppRoutes } from "./AppRoutes";
 
-import { BrowserRouter as Router, Routes, Route  } from "react-router-dom";
-
-import { Register } from "../Pages/Register";
-import { PrivateRoute } from "./PrivateRoute";
-
+import { AppRoutes } from "../Routes/AppRoutes";
 
 interface ContexProps {
 
@@ -34,7 +28,7 @@ export let BudgetContex = createContext<ContexProps>({} as ContexProps)
 
 interface User {
     name: string;
-    isLogged:boolean;
+    isLogged: boolean;
 }
 
 export interface Budgets {
@@ -90,14 +84,9 @@ export function AppContexProvider() {
 
     function AddBudget(budgetInfo: Budgets): void {
 
-
         setBudgets(budget => {
-
             return [...budget, budgetInfo]
         })
-
-
-
     }
 
     function selectBudget(budgetName: string): void {
@@ -106,9 +95,7 @@ export function AppContexProvider() {
     }
 
     function addExpenses(expenseInfo: Expenses): void {
-
         setExpenses(expense => {
-
             return [...expense, expenseInfo]
         })
     }
@@ -116,38 +103,25 @@ export function AppContexProvider() {
     useEffect(() => {
 
         console.log("renderizo")
-
         localStorage.setItem("budgets", JSON.stringify(budgets))
-
     }, [budgets])
 
     useEffect(() => {
         localStorage.setItem("expenses", JSON.stringify(expenses))
-
     }, [expenses])
 
-    useEffect(() => {
-        localStorage.setItem("user", JSON.stringify(user))
+    // useEffect(() => {
 
-    }, [user])
+    //     localStorage.setItem("user", JSON.stringify(user))
+
+    // }, [user])
 
 
     return (
         <div style={{ display: "flex", flexDirection: "column", justifyContent: "start", marginTop: "0px", margin: "0px", padding: '0px', height: "100vh" }} >
 
             <BudgetContex.Provider value={{ budgets: budgets, addbuget: AddBudget, selectBudget, expenses, budgetSelected, addExpenses, setBudgets, setRangeValue, rangeValue, setExpenses, popUp, setPopUp, popUpValues, setPopUpValues, user, setUser }}>
-
-                    <Router>
-                            <Header />
-                            <Routes>
-                                <Route path="/regrister" element={ <Register /> } />                         
-                                <Route path="/*" element={
-                                    <PrivateRoute>
-                                      <AppRoutes />
-                                    </PrivateRoute>
-                                } />
-                            </Routes>
-                    </Router>
+                    <AppRoutes />      
             </BudgetContex.Provider>
         </div>
     )

@@ -1,7 +1,7 @@
 
 import { formatWithCurrency, formatAmount, capitalizeName } from "../helpers/helper";
 import { Link } from "react-router-dom"
-import { BudgetContex } from "../Contex/AppContex";
+import { BudgetContex } from "../Contex/AppContexProvider";
 import { useContext, useState } from "react"
 import  close from  "../assets/close.png"
 
@@ -46,7 +46,7 @@ export function BudgetItem(props: BudgetsItem) {
       {/* <div className="cursor-pointer  absolute" style={{ top: "0px", right: "10px", color: "red" }} onClick={() => setPopUpValuesAndOpenIt(props.id)} >X</div> */}
       <img className=" cursor-pointer absolute" style={{ top: "4px", width:"12px", height:"12px",  right: "5px"}} onClick={() => setPopUpValuesAndOpenIt(props.id)} src={close}/>
       <div className="flex justify-between w-full px-2 " >
-        <p>{capitalizeName(props.name)}</p>
+        <p className="text-gray-950" >{capitalizeName(props.name)}</p>
         <p>{formatWithCurrency(props.amount)} Budgeted</p>
       </div>
       <input value={props.rangeValue} style={{ width: "90%" }} type="range" />

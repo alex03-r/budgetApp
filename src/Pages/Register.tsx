@@ -1,4 +1,4 @@
-import { BudgetContex } from "../Contex/AppContex"
+import { BudgetContex } from "../Contex/AppContexProvider"
 import { useContext, useRef } from "react"
 import Sea from "../assets/RealSea.jpeg"
 import { useNavigate } from "react-router-dom"
@@ -18,6 +18,8 @@ export function Register() {
             alert("Please enter your name")
             return
         }
+
+        localStorage.setItem("user", JSON.stringify({ name:inputRef.current.value, isLogged: true }))
         setUser({ name: inputRef.current.value, isLogged: true })
         setBudgets([])
         setExpenses([])
@@ -32,10 +34,10 @@ export function Register() {
 
                 <div className="ms-0 pe-5 sm:mt-10 sm:justify-center flex sm:flex-row md:flex-col ">
                     <img className=" sm:w-36 w-48 rounded-2xl" src={Money} />
-                <div className="flex-col items-center" >
-                      <h1 className="text-xl sm:ms-4 sm:mt-20 lg:mt-14 xl:mt-10 mt-20 lg:ms-1 text-slate-900 font-bold" >Take control of your money</h1>
-                     <h1 className=" sm:ms-4 text-lg italic" >Personal budgeting is the key for your finantial success</h1>
-                </div>
+                    <div className="flex-col items-center" >
+                        <h1 className="text-xl sm:ms-4 sm:mt-20 lg:mt-14 xl:mt-10 mt-20 lg:ms-1 text-slate-900 font-bold" >Take control of your money</h1>
+                        <h1 className=" sm:ms-4 text-lg italic" >Personal budgeting is the key for your finantial success</h1>
+                    </div>
                 </div>
                 <div className="shadow-md border rounded sm:h-2/4 md:h-3/4 lg:h-2/4 h-2/4 sm:w-1/2 md:w-2/5 lg:w-2/5 w-3/5 sm:mt-4 flex flex-col justify-evenly items-center boxRegister" >
                     <h1 className="mt-3 text-xl " >Register</h1>
@@ -44,9 +46,6 @@ export function Register() {
                         <button className="border mt-2 ms-2 w-11/12 rounded border-l-white text-white p-1 bg-sky-400 " onClick={onRegister} >Register</button>
                     </div>
                 </div>
-
-
-
             </div>
             <img className="sm:mt-32 lg:mt-28 mt-16 " style={{ height: "70px" }} src={Sea} />
         </>

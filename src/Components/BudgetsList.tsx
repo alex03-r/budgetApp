@@ -1,10 +1,10 @@
 
 import "../styles/bugets.css"
 import { useContext } from "react"
-import { BudgetContex } from "../Contex/AppContex"
+import { BudgetContex } from "../Contex/AppContexProvider"
 import { BudgetItem } from "./BudgetItem"
  
-export function ExistingBudgets(){
+export function BudgetsList(){
 
     const { budgets, setBudgets, setExpenses, expenses, setPopUp } =  useContext(BudgetContex);
 

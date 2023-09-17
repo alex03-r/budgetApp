@@ -1,4 +1,4 @@
-import { BudgetContex } from "../Contex/AppContex"
+import { BudgetContex } from "../Contex/AppContexProvider"
 import { useContext } from "react"
 // import { formatWithCurrency, capitalizeName } from "../helpers/helper"
 import "../styles/bugets.css"

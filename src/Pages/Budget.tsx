@@ -1,14 +1,13 @@
-
 import { useParams } from "react-router-dom"
 import { useContext } from "react"
-import { BudgetContex } from "../Contex/AppContex"
+import { BudgetContex } from "../Contex/AppContexProvider"
 import { PopUp } from "../Components/PopUp"
 
 import { ExpenseItem } from "../Components/ExpenseItem"
 import { BudgetSelected } from "../Components/BudgetSelected"
 
 
-export function RecentBuget() {
+export function Budget() {
 
 
     const { budgets, expenses, popUp } = useContext(BudgetContex)
@@ -26,8 +25,8 @@ export function RecentBuget() {
                             <h2 className="mt-10 ms-0 text-lg tex font-bold " > All expenses</h2>
                             <div>
                                 {
-                                    expensesOfBudgetSelected.map(exp => {
-                                        return <ExpenseItem key={exp.id} isDeleteEnable={false} {...exp} />
+                                    expensesOfBudgetSelected.map(expense => {
+                                        return <ExpenseItem key={expense.id} isDeleteEnable={false} {...expense} />
                                     })
                                 }
 

@@ -31,10 +31,9 @@ export function isPar(number:number){
     return number % 2 == 0
 }
 
-export function changeRangeValue(amount: number, holdAmount: number) {
+export function changeRangeValue(totalSpented: number, budgetTotalAmount: number) {
 
-    let value = (amount / holdAmount) * 100;
+    let value = (totalSpented / budgetTotalAmount) * 100;
 
     return 100 - value
-
 }

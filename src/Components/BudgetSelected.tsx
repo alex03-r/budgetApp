@@ -1,7 +1,7 @@
 
 import { Link, } from 'react-router-dom'
 import { formatWithCurrency, capitalizeName, formatAmount } from "../helpers/helper"
-import {  Budgets } from "../Contex/AppContex"
+import {  Budgets } from "../Contex/AppContexProvider"
 
 
 interface BudgetProps {

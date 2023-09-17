@@ -1,12 +1,11 @@
 import { useContext, useRef, useState, useEffect } from "react"
-import { BudgetContex } from "../Contex/AppContex"
-// import { Budgets } from "../Contex/AppContex"
+import { BudgetContex } from "../Contex/AppContexProvider"
 import { useForm } from "../Hooks/useForm"
 import { changeRangeValue } from "../helpers/helper"
 
 import "../styles/bugets.css"
 
-export function AddExpenses() {
+export function AddExpense() {
 
 
     const { values, onAddFields, removeFieldsValues } = useForm();
@@ -105,12 +104,12 @@ export function AddExpenses() {
                     <div className=" flex flex-column " >
 
                         <label>Expense name</label>
-                        <input className="border-1 rounded border-solid border-zinc-900  " name="name" value={values.name} onChange={(e) => onAddFields(e)} placeholder="item" type="text" />
+                        <input className="border-1 rounded border-solid border-zinc-900" autoComplete="off"  name="name" value={values.name} onChange={(e) => onAddFields(e)} placeholder="item" type="text" />
                     </div>
                     <div className=" flex flex-col flex-wrap ">
 
                         <label  >Amount</label>
-                        <input className="border-1 rounded border-solid border-zinc-900 sm:w-3/4 xl:w-2/4 " name="amount" value={values.amount} type="number" onChange={(e) => onAddFields(e)} placeholder="0.00" />
+                        <input className="border-1 rounded border-solid border-zinc-900 sm:w-3/4 xl:w-2/4 " autoComplete="off" name="amount" value={values.amount} type="number" onChange={(e) => onAddFields(e)} placeholder="0.00" />
                     </div>
 
                 </div>
