@@ -39,8 +39,7 @@ export function changeRangeValue(totalSpented: number, budgetTotalAmount: number
 }
 
 
-function organize(text:string){
+function All(){
 
-    return text.slice(0 , 5)
-
+    return 0
 }
